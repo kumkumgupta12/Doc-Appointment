@@ -1,0 +1,19 @@
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border: 1px;
+}
+
+.tagline{
+    margin-top: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-form{
+    border: 1px solid burlywood;
+    padding: 30px;
+    
+}

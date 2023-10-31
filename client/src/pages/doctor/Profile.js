@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./../../components/Layout";
+import Layout from "./../../components/Layout.js";
 import axios from "axios";
+import '../../styles/HomePageStyle.css'
 import { useParams, useNavigate } from "react-router-dom";
 import { Col, Form, Input, Row, TimePicker, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import moment from "moment";
-
-const Profile = () => {
-  const { user } = useSelector((state) => state.user);
+import ApplyDoctor from "../ApplyDoctor.js";
+ const Profile = () => {
+   const { user } = useSelector((state) => state.user);
   const [doctor, setDoctor] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  // update doc ==========
-  //handle form
+
+  
+//   // update doc ==========
+//   //handle form
   const handleFinish = async (values) => {
     try {
       dispatch(showLoading());
@@ -27,6 +30,7 @@ const Profile = () => {
             moment(values.timings[0]).format("HH:mm"),
             moment(values.timings[1]).format("HH:mm"),
           ],
+          
         },
         {
           headers: {
@@ -34,6 +38,7 @@ const Profile = () => {
           },
         }
       );
+      
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
@@ -47,9 +52,9 @@ const Profile = () => {
       message.error("Somthing Went Wrrong ");
     }
   };
-  // update doc ==========
+//   // update doc ==========
 
-  //getDOc Details
+//   //getDOc Details
   const getDoctorInfo = async () => {
     try {
       const res = await axios.post(
@@ -68,14 +73,14 @@ const Profile = () => {
       console.log(error);
     }
   };
-
+//to get id at initially using useEffect 
   useEffect(() => {
     getDoctorInfo();
     //eslint-disable-next-line
   }, []);
-  return (
+    return (
     <Layout>
-      <h1>Manage Profile</h1>
+      <h1 className="list">Manage Your Profile</h1>
       {doctor && (
         <Form
           layout="vertical"
@@ -196,5 +201,16 @@ const Profile = () => {
     </Layout>
   );
 };
+
+// export default Profile;
+
+
+// const Profile = () => {
+//   return (
+//     <Layout>
+//       <h1>Profile check</h1>
+//         </Layout>
+//   )
+// }
 
 export default Profile;

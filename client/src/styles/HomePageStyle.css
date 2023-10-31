@@ -1,0 +1,9 @@
+.list{
+   
+    background-color: hsl(165, 89%, 75%);
+    box-shadow: 0 0 2px beige;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: saddlebrown;
+    text-align: center;
+}

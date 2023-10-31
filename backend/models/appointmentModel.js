@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const appointmentSchema = new mongoose.Schema(
   {
@@ -35,6 +35,6 @@ const appointmentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const appointmentModel = mongoose.model("appointments", appointmentSchema);
+const appointmentModel = mongoose.model('appointments', appointmentSchema);
 
-module.exports = appointmentModel;
+export default appointmentModel;

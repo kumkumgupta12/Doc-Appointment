@@ -39,8 +39,10 @@ const BookingPage = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/user/booking-availbility",
-        { doctorId: params.doctorId, date, time },
+        "/api/v1/users/bookeAppointmnet",
+        { doctorId: params.doctorId,
+          date,
+          time},
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -69,7 +71,7 @@ const BookingPage = () => {
       }
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/user/book-appointment",
+        "/api/v1/users/bookeAppointmnet",
         {
           doctorId: params.doctorId,
           userId: user._id,
@@ -107,7 +109,7 @@ const BookingPage = () => {
             <h4>
               Dr.{doctors.firstName} {doctors.lastName}
             </h4>
-            <h4>Fees : {doctors.feesPerCunsaltation}</h4>
+            <h4>Fees : {doctors.fees}</h4>
             <h4>
               Timings : {doctors.timings && doctors.timings[0]} -{" "}
               {doctors.timings && doctors.timings[1]}{" "}
@@ -136,10 +138,15 @@ const BookingPage = () => {
               >
                 Check Availability
               </button>
-
-              <button className="btn btn-dark mt-2" onClick={handleBooking}>
+                {/* {isAvailable && (
+                  <button className="btn btn-dark mt-2" onClick={handleBooking}>
+                  Book Now
+                </button>
+                )} */}
+                <button className="btn btn-dark mt-2" onClick={handleBooking}>
                 Book Now
               </button>
+              
             </div>
           </div>
         )}

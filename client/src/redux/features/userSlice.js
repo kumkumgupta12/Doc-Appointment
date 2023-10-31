@@ -1,15 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit'
 
+//create  a slice as object
 export const userSlice = createSlice({
-  name: "user",
-  initialState: {
-    user: null,
-  },
-  reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
+    name: 'user',
+    initialState:{
+        user:null
     },
-  },
-});
+    reducers:{
+        setUser: (state, action) =>{
+            //intial stae ko fullfill krenge, 
+            //access initial state using state.user and fullfill using .payload
+            state.user = action.payload
+        }
+    }
+})
 
-export const { setUser } = userSlice.actions;
+export const {setUser} = userSlice.actions;
